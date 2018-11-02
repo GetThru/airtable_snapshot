@@ -1,13 +1,16 @@
 defmodule AirtableSnapshot do
-  def fetch(%{
-        key: key,
-        table: table,
-        base: base,
-        filter_records: filter_records,
-        process_records: process_records,
-        bucket_name: bucket_name
-      })
-      when is_binary(key) and is_binary(table) and is_binary(base) and is_binary(bucket_name) do
+  def fetch(
+        opts = %{
+          key: key,
+          table: table,
+          base: base,
+          filter_records: filter_records,
+          process_records: process_records
+        }
+      )
+      when is_binary(key) and is_binary(table) and is_binary(base) do
+    bucket_name = Map.get(opts, :bucket_name, "dialer-airtable-snapshots")
+
     try do
       filtered_and_processed =
         fresh_fetch(%{
