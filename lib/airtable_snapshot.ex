@@ -49,9 +49,8 @@ defmodule AirtableSnapshot do
     end
   rescue
     error ->
-      Logger.error("""
-      Failed to fetch from Airtable key=#{key} table=#{table} base=#{base}
-      #{inspect(error)}
-      """)
+      Logger.error(fn ->
+        "Failed to fetch from Airtable #{inspect(error)}"
+      end)
   end
 end

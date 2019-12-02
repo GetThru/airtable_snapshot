@@ -28,8 +28,3 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 # import_config "#{Mix.env()}.exs"
-
-config :ex_aws,
-  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
-  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
-  region: System.get_env("AWS_BUCKET_REGION")
